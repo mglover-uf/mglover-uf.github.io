@@ -1,0 +1,373 @@
+<!-- Created by Alex Garcia, 2022-23 -->
+<!-- ALEX Labs -->
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../ALEX.css">
+<link rel="stylesheet" href="./css/other.css">
+<link rel="Shortcut Icon" type="image/png" href="../ALEXIcon.png">
+
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+<style>
+body {
+  width: 100%;
+}
+</style>
+<script>
+function home() {
+  window.open("../ALEXLabs.html", "_self");
+}
+</script>
+</head>
+
+<header>
+  <title>Unit Conversions</title>
+  <button class="button biggerButton" onclick="home()">ALEX Home</button>
+</header>
+
+<body>
+  <form name="converter">
+    <div class="body">
+      <section id="Length">
+        <div class="ALEX center">
+          <h1>Length</h1>
+
+          <div class="row">
+            <div class="column">
+              <h2>Imperial</h2>
+              <p>
+                <label>Inches:</label>
+                <input name="inch" type="number" placeholder="Inches" oninput="inchConverter()"
+                  onchange="inchConverter()">
+              </p>
+              <p>
+                <label>Feet:</label>
+                <input name="feet" type="number" placeholder="Feet" oninput="footConverter()"
+                  onchange="inchConverter()">
+              </p>
+              <p>
+                <label>Miles:</label>
+                <input name="mile" type="number" placeholder="Miles" oninput="mileConverter()"
+                  onchange="mileConverter()">
+              </p>
+            </div>
+            <div class="column">
+              <h2>Metric</h2>
+              <p>
+                <label>Centimeters:</label>
+                <input name="cm" type="number" placeholder="Centimeters" oninput="cmConverter()"
+                  onchange="cmConverter()">
+              </p>
+              <p>
+                <label>Meters:</label>
+                <input name="m" type="number" placeholder="Meters" oninput="mConverter()" onchange="mConverter()">
+              </p>
+              <p>
+                <label>Kilometers:</label>
+                <input name="km" type="number" placeholder="Kilometers:" oninput="kmConverter()"
+                  onchange="kmConverter()">
+              </p>
+            </div>
+          </div>
+
+          <h2>Astronomical</h2>
+
+          <p>
+            <label>AU:</label>
+            <input name="AU" type="number" placeholder="AU" oninput="AUConverter()" onchange="AUConverter()">
+          </p>
+          <p>
+            <label>Light Years:</label>
+            <input name="lyr" type="number" placeholder="lyr" oninput="lyrConverter()" onchange="lyrConverter()">
+          </p>
+          <p>
+            <label>Parsecs:</label>
+            <input name="pc" type="number" placeholder="pc" oninput="pcConverter()" onchange="pcConverter()">
+          </p>
+          <!-- <button onclick="funcClear('Length')" class="clearButton">Clear</button> -->
+
+        </div>
+      </section>
+      <section id='Weight'>
+        <div class="ALEX center">
+          <h1>Weight</h1>
+
+          <div class="row">
+            <div class="column">
+              <p>
+                <label>Pounds:</label>
+                <input name="lbs" type="number" placeholder="lbs" oninput="lbsConverter()" onchange="lbsConverter()">
+              </p>
+            </div>
+            <div class="column">
+              <p>
+                <label>Kilograms:</label>
+                <input name="kgs" type="number" placeholder="kgs" oninput="kgsConverter()" onchange="kgsConverter()">
+              </p>
+            </div>
+            <p style="opacity:0;">Hello</p>
+          </div>
+
+          <!-- <button onclick="funcClear('Weight')" class="clearButton">Clear</button> -->
+
+        </div>
+      </section>
+      <section id="Time">
+        <div class="ALEX center">
+
+          <h1>Time</h1>
+
+          <div class="row">
+            <div class="column">
+              <p>
+                <label>Seconds:</label>
+                <input name="sec" type="number" placeholder="Seconds" oninput="secConverter()"
+                  onchange="secConverter()">
+              </p>
+              <p>
+                <label>Hours:</label>
+                <input name="hrs" type="number" placeholder="Hours" oninput="hrsConverter()" onchange="hrsConverter()">
+              </p>
+            </div>
+            <div class="column">
+              <p>
+                <label>Minutes:</label>
+                <input name="min" type="number" placeholder="Minutes" oninput="minConverter()"
+                  onchange="minConverter()">
+              </p>
+              <p>
+                <label>Days:</label>
+                <input name="day" type="number" placeholder="Days" oninput="dayConverter()" onchange="dayConverter()">
+              </p>
+              <p>
+                <br>
+              </p>
+            </div>
+          </div>
+          <p>
+            <label>Years:</label>
+            <input name="yrs" type="number" placeholder="Years" oninput="yrsConverter()" onchange="yrsConverter()">
+          </p>
+
+          <!-- <button onclick="funcClear('Time')" class="clearButton">Clear</button> -->
+        </div>
+      </section>
+
+    </div>
+
+    <p id="test"></p>
+  </form>
+
+<script>
+function cmConverter() {
+  /* Convert values from all length boxes to centimeters
+
+  */
+  document.converter.inch.value = (document.converter.cm.value / 2.54).toFixed(6);
+  document.converter.feet.value = (document.converter.cm.value / 30.48).toFixed(6);
+  document.converter.m.value    = (document.converter.cm.value / 100);
+  document.converter.mile.value = (document.converter.cm.value / 160934).toFixed(6);
+  document.converter.km.value   = (document.converter.cm.value / 100000).toFixed(6);
+  document.converter.AU.value   = (document.converter.cm.value / 1.496e13).toFixed(6);
+  document.converter.lyr.value  = (document.converter.cm.value / 9.461e17).toFixed(6);
+  document.converter.pc.value   = (document.converter.cm.value / 3.086e18).toFixed(6);
+}
+
+function inchConverter() {
+  /* Convert values from all length boxes to inches
+
+  */
+  document.converter.cm.value   = (document.converter.inch.value * 2.54).toFixed(6);
+  document.converter.feet.value = (document.converter.inch.value / 12).toFixed(6);
+  document.converter.m.value    = (document.converter.inch.value / 39.37).toFixed(6);
+  document.converter.mile.value = (document.converter.inch.value / 63360).toFixed(6);
+  document.converter.km.value   = (document.converter.inch.value / 39370).toFixed(6);
+  document.converter.AU.value   = (document.converter.inch.value / 5.89e12).toFixed(6);
+  document.converter.lyr.value  = (document.converter.inch.value / 3.725e17).toFixed(6);
+  document.converter.pc.value   = (document.converter.inch.value / 1.917e13).toFixed(6);
+}
+
+function footConverter() {
+  /* Convert values from all length boxes to feet
+
+  */
+  document.converter.inch.value = (document.converter.feet.value * 12);
+  document.converter.cm.value   = (document.converter.feet.value * 30.48).toFixed(6);
+  document.converter.m.value    = (document.converter.feet.value * 3.281).toFixed(6);
+  document.converter.mile.value = (document.converter.feet.value / 5280).toFixed(6);
+  document.converter.km.value   = (document.converter.feet.value / 3281).toFixed(6);
+  document.converter.AU.value   = (document.converter.feet.value / 4.908e11).toFixed(6);
+  document.converter.lyr.value  = (document.converter.feet.value / 3.104e16).toFixed(6);
+  document.converter.pc.value   = (document.converter.feet.value / 1.012e17).toFixed(6);
+}
+
+function mConverter() {
+  /* Convert values from all length boxes to meters
+
+  */
+  document.converter.feet.value = (document.converter.m.value / 3.281).toFixed(6);
+  document.converter.inch.value = (document.converter.m.value / 39.37).toFixed(6);
+  document.converter.cm.value   = (document.converter.m.value / 100);
+  document.converter.mile.value = (document.converter.m.value / 1609.34).toFixed(6);
+  document.converter.km.value   = (document.converter.m.value / 1000).toFixed(6);
+  document.converter.AU.value   = (document.converter.m.value / 1.496e11).toFixed(6);
+  document.converter.lyr.value  = (document.converter.m.value / 9.461e15).toFixed(6);
+  document.converter.pc.value   = (document.converter.m.value / 3.086e16).toFixed(6);
+}
+
+function mileConverter() {
+  /* Convert values from all length boxes to miles
+
+  */
+  document.converter.feet.value = document.converter.mile.value * 5280;
+  document.converter.inch.value = document.converter.mile.value * 63360;
+  document.converter.cm.value   = document.converter.mile.value * 160934;
+  document.converter.m.value    = document.converter.mile.value * 1609.34;
+  document.converter.km.value   = (document.converter.mile.value * 1.609).toFixed(6);
+  document.converter.AU.value   = (document.converter.mile.value / 9.29e7).toFixed(6);
+  document.converter.lyr.value  = (document.converter.mile.value / 5.879e12).toFixed(6);
+  document.converter.pc.value   = (document.converter.mile.value / 1.917e13).toFixed(6);
+}
+
+function kmConverter() {
+  /* Convert values from all length boxes to kilometers
+
+  */
+  document.converter.feet.value = (document.converter.km.value * 3281).toFixed(6);
+  document.converter.inch.value = (document.converter.km.value * 39370).toFixed(6);
+  document.converter.cm.value   = (document.converter.km.value * 100000).toFixed(6);
+  document.converter.m.value    = (document.converter.km.value * 1000).toFixed(6);
+  document.converter.mile.value = (document.converter.km.value / 1.609).toFixed(6);
+  document.converter.AU.value   = (document.converter.km.value / 1.49e8).toFixed(6);
+  document.converter.lyr.value  = (document.converter.km.value / 9.461e12).toFixed(6);
+  document.converter.pc.value   = (document.converter.km.value / 3.086e13).toFixed(6);
+}
+
+function AUConverter() {
+  /* Convert values from all length boxes to Astronomical Units
+
+  */
+  document.converter.km.value   = document.converter.AU.value * 1.496e8;
+  document.converter.mile.value = document.converter.AU.value * 9.29e7;
+  document.converter.lyr.value  = (document.converter.AU.value / 63241).toFixed(6);
+  document.converter.pc.value   = (document.converter.AU.value / 205265).toFixed(6);
+  document.converter.inch.value = document.converter.AU.value * 5.89e12;
+  document.converter.cm.value   = document.converter.AU.value * 1.496e13;
+  document.converter.m.value    = document.converter.AU.value * 1.496e11;
+  document.converter.feet.value = document.converter.AU.value * 4.908e11;
+}
+
+function lyrConverter() {
+  /* Convert values from all length boxes to light years
+
+  */
+  document.converter.km.value   = document.converter.lyr.value * 9.461e12;
+  document.converter.mile.value = document.converter.lyr.value * 5.879e12;
+  document.converter.AU.value   = document.converter.lyr.value * 63241;
+  document.converter.pc.value   = (document.converter.lyr.value / 3.262).toFixed(6);
+  document.converter.inch.value = document.converter.lyr.value * 3.725e17;
+  document.converter.cm.value   = document.converter.lyr.value * 9.461e17;
+  document.converter.m.value    = document.converter.lyr.value * 9.461e15;
+  document.converter.feet.value = document.converter.lyr.value * 3.104e16;
+}
+
+function pcConverter() {
+  /* Convert values from all length boxes to parsecs
+
+  */
+  document.converter.km.value   = document.converter.pc.value * 3.086e13;
+  document.converter.mile.value = document.converter.pc.value * 1.917e13;
+  document.converter.AU.value   = document.converter.pc.value * 206265;
+  document.converter.lyr.value  = document.converter.pc.value * 3.262;
+  document.converter.inch.value = document.converter.pc.value * 1.215e18;
+  document.converter.cm.value   = document.converter.pc.value * 3.086e18;
+  document.converter.m.value    = document.converter.pc.value * 3.086e16;
+  document.converter.feet.value = document.converter.pc.value * 1.012e17;
+}
+
+function funcClear(which) {
+  /* Clear all functions
+
+  I'm not sure this actually works or does anything... and I'm too lazy to check
+
+  Input:
+  which - element to clear
+
+  */
+  document.getElementById('test').innerHTML = "unitConversions.html#" + which;
+  // window.open("unitConversions.html#" + which, "_self");
+}
+
+function lbsConverter() {
+  /* Convert values from all weight boxes to pounds
+
+  */
+  document.converter.kgs.value = (document.converter.lbs.value / 2.205).toFixed(6);
+}
+
+function kgsConverter() {
+  /* Convert values from all weight boxes to kilograms
+
+  */
+  document.converter.lbs.value = (document.converter.kgs.value * 2.205).toFixed(6);
+}
+
+function secConverter() {
+  /* Convert values from all time boxes to seconds
+
+  */
+  document.converter.min.value = (document.converter.sec.value / 60).toFixed(6);
+  document.converter.hrs.value = (document.converter.sec.value / 3600).toFixed(6);
+  document.converter.day.value = (document.converter.sec.value / 86400).toFixed(6);
+  document.converter.yrs.value = (document.converter.sec.value / 3.154e7).toFixed(6);
+}
+
+function minConverter() {
+  /* Convert values from all time boxes to minutes
+
+  */
+  document.converter.sec.value = document.converter.min.value * 60;
+  document.converter.hrs.value = (document.converter.min.value / 60).toFixed(6);
+  document.converter.day.value = (document.converter.min.value / 1440).toFixed(6);
+  document.converter.yrs.value = (document.converter.min.value / 525600).toFixed(6);
+}
+
+function hrsConverter() {
+  /* Convert values from all time boxes to hours
+
+  */
+  document.converter.sec.value = document.converter.hrs.value * 3600;
+  document.converter.min.value = document.converter.hrs.value * 60;
+  document.converter.day.value = (document.converter.hrs.value / 24).toFixed(6);
+  document.converter.yrs.value = (document.converter.hrs.value / 8760).toFixed(6);
+}
+
+function dayConverter() {
+  /* Convert values from all time boxes to days
+
+  */
+  document.converter.sec.value = document.converter.day.value * 86400;
+  document.converter.min.value = document.converter.day.value * 1440;
+  document.converter.hrs.value = document.converter.day.value * 24;
+  document.converter.yrs.value = (document.converter.day.value / 365).toFixed(6);
+}
+
+function yrsConverter() {
+  /* Convert values from all time boxes to years
+
+  */
+  document.converter.sec.value = document.converter.yrs.value * 3.154e7;
+  document.converter.min.value = document.converter.yrs.value * 525600;
+  document.converter.hrs.value = document.converter.yrs.value * 8760;
+  document.converter.day.value = document.converter.yrs.value * 365;
+}
+</script>
+</body>
+
+</html>

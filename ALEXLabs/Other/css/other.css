@@ -1,0 +1,76 @@
+/* Created by Alex Garcia, 2022-23 */
+/* ALEX Labs */
+
+body {
+    background-image: url('../../starBackground.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-size: fill;
+    display: table;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.clearButton {
+    background-color: #ff7518;
+    color: black;
+    border-radius: 15px;
+    border: 3px solid black;
+    padding: 8px;
+    font-size:min(max(14pt, 1.5vw), 16pt);
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.clearButton:hover {
+    background-color: black;
+    color: #ffc87c;
+}
+
+img {
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+h1,
+h2 {
+    color: #ff7518;
+}
+
+.ALEX {
+    border: 1vw solid darkorange;
+    color: black;
+    background-color: #ffc87c;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 25%;
+    font-size: 15pt;
+    background-color: white;
+    color: blue;
+    min-width:15ch;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row:after {
+    display: table;
+    clear: both;
+}
+
+label {
+    color: black;
+}
