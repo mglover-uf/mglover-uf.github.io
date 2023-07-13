@@ -1,0 +1,190 @@
+/* Created by Alex Garcia, 2022-23 */
+/* ALEX Labs */
+
+img {
+  width:85%;
+  height:85%;
+  border-radius:15px;
+}
+
+input {
+  background-color:powderblue;
+  border: 0.05vw solid darkblue;
+  border-radius:16px;
+  color:darkblue;
+  padding:0.5vw;
+  font-size:min(max(14pt, 2vw), 20pt);
+}
+
+input:hover {
+  transition:0.5s;
+  transform:scale(1.005);
+  background-color:darkblue;
+  color:powderblue;
+  margin-left:0px;
+  margin-right:0px;
+}
+
+input:not(:hover) {
+  transition:0.5s;
+  transform:scale(1);
+  border: 0.05vw solid darkblue;
+  color:darkblue;
+}
+
+.HubbleConstant {
+  border: 1vw solid red;
+  background-color:#ffa07a;
+  border-radius:5px;
+  padding:25px;
+  margin-top:10px;
+  margin-bottom:10px;
+  max-width:120ch;
+}
+
+footer {
+  margin-top:15px;
+  padding-bottom:0px;
+}
+
+.footerButton {
+  margin-bottom:0;
+}
+
+canvas {
+  border:5px black solid;
+  background-color:white;
+  border-radius:15px;
+  width:75%;
+}
+
+button {
+  background-color:darkgray;
+  border:2px black solid;
+  border-radius:5px;
+  font-size:min(max(10pt, 2vw), 14pt);
+  position:absolute;
+  padding:2.5px;
+}
+
+button:hover {
+  background-color:white;
+  cursor:pointer;
+}
+
+input {
+  position:absolute;
+  width:50%;
+  background-color:darkgray;
+  border: 2px black solid;
+  border-radius:16px;
+  color:black;
+  padding:0.5vw;
+  font-size:min(max(10pt, 2vw), 14pt);
+  transition:0s;
+}
+
+input:hover {
+  background-color:white;
+  color:black;
+  border: 2px black solid;
+}
+
+input:not(:hover) {
+  border: 2px black solid;
+  color:black;
+}
+
+input::placeholder {
+  color:black;
+}
+
+.openButton{
+  background-color:lightgreen;
+}
+.openButton:hover {
+  background-color:darkgreen;
+}
+.closeButton {
+  background-color:coral;
+}
+.closeButton:hover {
+  background-color:orange;
+}
+
+
+.loading {
+  position: relative;
+}
+
+.loading:before {
+  content:'';
+  animation: load var(--seconds) linear;
+}
+
+@keyframes load{
+  0%{content:  'STARTING';}
+  5%{content:  'Observing.';}
+  7.5%{content:  'Observing..';}
+  10%{content: 'Observing...';}
+  12.5%{content: 'Observing';}
+  15%{content: 'Observing.';}
+  17.5%{content: 'Observing..';}
+  20%{content: 'Observing...';}
+  22.5%{content: 'Observing';}
+  25%{content: 'Observing.';}
+  27.5%{content: 'Observing..';}
+  30%{content: 'Observing...';}
+  32.5%{content: 'Observing';}
+  35%{content: 'Observing.';}
+  37.5%{content: 'Observing..';}
+  40%{content: 'Observing...';}
+  42.5%{content: 'Observing';}
+  45%{content: 'Observing.';}
+  47.5%{content: 'Observing..';}
+  50%{content: 'Observing...';}
+  52.5%{content: 'Observing';}
+  55%{content: 'Observing.';}
+  57.5%{content: 'Observing..';}
+  60%{content: 'Observing...';}
+  62.5%{content: 'Observing';}
+  65%{content: 'Observing.';}
+  67.5%{content: 'Observing..';}
+  70%{content: 'Observing...';}
+  72.5%{content: 'Observing';}
+  75%{content: 'Observing.';}
+  77.5%{content: 'Observing.';}
+  80%{content: 'Observing...';}
+  82.5%{content: 'Observing';}
+  85%{content: 'Observing.';}
+  87.5%{content: 'Observing..';}
+  90%{content: 'Observing...';}
+  92.5%{content: 'Observing';}
+  95%{content: 'Observing.';}
+  97.5%{content: 'Observing..';}
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden; 
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #ffa07a;
+  border-radius:5px;
+  margin: auto;
+  padding: 20px;
+  border: 1vw solid red;
+  width: 80%;
+}
