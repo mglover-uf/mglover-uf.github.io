@@ -1,0 +1,120 @@
+<!-- Created by Alex Garcia, 2022-23 -->
+<!-- ALEX Labs -->
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../ALEX.css">
+<link rel="stylesheet" href="./css/sun.css">
+<link rel="Shortcut Icon" type="image/png" href="SunIcon.png">
+
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+<script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+<script src="plotly-2.11.1.min.js"></script>
+<script>
+function SpecHome() {
+  window.open('../ALEXLabs.html', '_self');
+}
+</script>
+</head>
+
+<header>
+  <title>The Blackbody</title>
+  <button class="button" onclick="SpecHome()">Main Menu</button>
+</header>
+
+<body>
+  <div class="body">
+    <div class="AstrSpectroscopy center">
+      <h1>The Blackbody</h2>
+
+
+        <p>What is the peak wavelength? (Use nanometers)</p>
+
+        <input id="MaxLambda" type="number" placeholder="Peak Wavelength" min="100" max="1000" onchange="" />
+
+    </div>
+
+    <input type="button" onclick="plot()" value="Plot" class="center" /><br>
+
+    <div class="AstrSpectroscopy center">
+      <div class="slidecontainer">
+        <p><b>Blackbody Temperature:</b> <span id="Temperature"></span> K</p>
+        <input type="range" min="3000" max="30000" value="0" step="100" class="slider" id="myRange">
+
+      </div>
+
+      <div id="myPlot" style="width:100%;padding-left:0;padding-right:0%;"></div>
+
+    </div>
+</body>
+
+<script src="./js/helperFunctions.js"></script>
+<script src="./js/wavelengthToColor.js"></script>
+<script src="./js/blackbody.js"></script>
+<script>
+  // Define some constants and arrays for later
+  var WLmin = 350;
+  var WLmax = 700;
+
+  var colors = new Array(1000);
+  var lamArr = new Array(1000);
+
+  var wavelengthCurve = new Array(1000);
+  var temperatureCurve = new Array(1000);
+
+  var slider = document.getElementById("myRange");
+  var output = document.getElementById("Temperature");
+  output.innerHTML = slider.value;
+
+  var layout = {
+    plot_bgcolor: "black",
+    paper_bgcolor: "black",
+    hovermode: false,
+    yaxis: {
+      autorange: true,
+      showgrid: false,
+      zeroline: false,
+      showline: false,
+      autotick: true,
+      ticks: '',
+      showticklabels: false,
+      fixedrange: true
+    },
+    bargap: 0,
+    xaxis: {
+      tickcolor: "white",
+      tickfont: { color: "white" },
+      title: "Wavelength (nm)",
+      titlefont: { color: "white" },
+      tickvals: [1e-7, 2e-7, 3e-7, 4e-7, 5e-7, 6e-7, 7e-7, 8e-7, 9e-7, 10e-7],
+      ticktext: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+      fixedrange: true
+    },
+  }
+
+  var config = {
+    modeBarButtonsToRemove: ['pan2d', 'lasso2d', 'select2d', 'autoScale2d', 'toImage',
+      'zoom2d', 'resetScale2d', 'zoomIn2d', 'zoomOut2d'],
+    responsive: true,
+    displaylogo: false,
+  }
+
+  // When changing the slider, update the curves appropraitely 
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+    changeTemp();
+  }
+
+  // Plot
+  Plotly.newPlot("myPlot", data, layout, config);
+</script>
+<footer>
+  <button class="button" onclick="window.location.href = 'backgroundExplain.html'">About the background image </button>
+</footer>
+</html>
