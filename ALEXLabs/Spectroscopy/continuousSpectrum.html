@@ -1,0 +1,77 @@
+<!-- Created by Alex Garcia, 2022-23 -->
+<!-- ALEX Labs -->
+
+<!-- DEPRECATED -->
+<!-- ORIGINALLY A RANDOM WALK SIMULATOR - CHANGES WAVELENGTH WITH EACH STEP -->
+<!-- DIDN'T FIT IN SCOPE OF LABS -->
+<!-- UNSURE OF PHYSICAL NATURE OF THIS -->
+<!--  -->
+<!-- THIS IS FULLY FUNCTIONAL, JUST UNUSED -->
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../ALEX.css">
+<link rel="stylesheet" href="./css/spectroscopy.css">
+
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+<script>
+function SpecHome() {
+  window.open('AstronomicalSpectroscopy.html', '_self');
+}
+</script>
+
+</head>
+
+<header>
+  <title>Continuous Spectrum</title>
+  <button class="button biggerButton" onclick="SpecHome()">Main Menu</button>
+</header>
+
+<body>
+  <div class="body">
+
+    <div class="AstrSpectroscopy center">
+
+      <h1>Continuous Spectrum </h2>
+
+        <p>This experiment is to understand the random walk through the Sun.</p>
+    </div>
+
+    <canvas class="center" id="canvas" height="500" width="750"></canvas> <br>
+    <input type="button" onclick="start()" value="Start!" class="center" />
+
+    <div class="AstrSpectroscopy center">
+
+      <p><b><span>Number of walks:</span> <span id="display"> </span><br><br>
+
+         <span id="finish"></span> <span id='WL'> </span><b>
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+</body>
+
+<script src="./js/helperFunctions.js"></script>
+<script src="./js/wavelengthToColor.js"></script>
+<script src="./js/continuousSpectrum.js"></script>
+<script>
+  // Based on code found here: https://gist.github.com/hacknightly/fd609abe5a7e15e223a823ee6e0724c8
+  let x = 375;
+  let y = 250;
+  var counter = document.querySelector('canvas');
+  var number = 0; // Total Number of steps made
+  var animation = false;
+
+</script>
+
+</html>

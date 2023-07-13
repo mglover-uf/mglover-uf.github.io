@@ -1,0 +1,105 @@
+<!-- Created by Alex Garcia, 2022-23 -->
+<!-- ALEX Labs -->
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../ALEX.css">
+<link rel="stylesheet" href="./css/spectroscopy.css">
+<link rel="Shortcut Icon" type="image/png" href="SpectroscopyIcon.png">
+
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+function ALEXHome() {
+  window.open('../ALEXLabs.html', '_self');
+}
+
+function spectralLines() {
+  window.open("spectralLines.html", "_self");
+}
+
+function blackbody() { window.open("blackbody.html", "_self"); }
+
+function continuousSpectrum() {
+  window.open("continuousSpectrum.html", "_self");
+}
+
+function absorptionSpectra() {
+  window.open("absorptionSpectra.html", "_self");
+}
+
+function backgroundImage() {
+  window.open("backgroundExplain.html", target = "_self");
+}
+</script>
+
+<header>
+  <title>Astronomical Spectroscopy</title>
+  <button class="button biggerButton" onclick="ALEXHome()">ALEX Home</button>
+</header>
+
+<body>
+  <div class="body">
+
+    <div class="AstrSpectroscopy center">
+
+      <h2 style="text-align:center;font-size:35pt;">Astronomical Spectroscopy</h2>
+
+    </div>
+
+    <div class="AstrSpectroscopy center">
+
+      <h2>Identifying Spectral Lines </h2>
+
+      <p>Before we get into the nitty-gritty of why the Sun does what it does, let's take a step back and see what it
+        does. In this experiment, you will see a mock stellar spectrum. You will notice that there are several
+        wavelengths missing from this spectrum. As you learned in Astronomical Spectroscopy I, one of Kirchoff's Laws
+        tells us about absorption spectra. The radiation from the Sun is one example of a place that we see these
+        absorption lines in a continuous source. <br><br>
+
+        The most conspicuous lines are called "Fraunhofer Lines" (named after the man who discovered and catalogued
+        them). As Kirchoff showed, each of these lines corresponds to a different electron transition within atoms. Use
+        the table in your lab manual and see if you can identify which line is which Fraunhofer line, as well as what
+        element it corresponds to.
+
+      </p>
+      <button class="AstrSpecButton" onclick=spectralLines()>Examine a mock stellar spectrum</button>
+
+    </div>
+
+    <!-- <div class="AstrSpectroscopy center">
+      <h2>The Blackbody</h2>
+
+      <p>All bodies in the universe that have a non-zero (Kelvin) temperature emit radiation. We idealize this radiation
+        with a concept called a perfect blackbody. How does the emission from a perfect blackbody vary with temperature?
+        Let's find out.</p>
+      <button class="AstrSpecButton" onclick=blackbody()>Understand how a blackbody varies with temperature </button>
+
+    </div> -->
+
+    <div class="AstrSpectroscopy center">
+      <h2>Absorption Spectra</h2>
+
+      <p>Why do we see the dark-line absorption features? <br><br>
+
+        This all goes back to Kirchoff's Laws. We have a cool, gaseous source being backlit by a continuous spectrum.
+        What the gas is made of determines the wavelengths that are absorbed. Let's examine this effect to see if we can
+        identify some specific gasses.
+      </p>
+
+      <button class="AstrSpecButton" onclick=absorptionSpectra()>Create absorption spectra</button>
+
+    </div>
+
+
+    <footer>
+      <button class="button" onclick="backgroundImage()">About the background image </button>
+    </footer>
+
+</body>
+
+</html>

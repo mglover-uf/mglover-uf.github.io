@@ -1,0 +1,161 @@
+<!-- Created by Alex Garcia, 2022-23 -->
+<!-- ALEX Labs -->
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../ALEX.css">
+<link rel="stylesheet" href="./css/spectroscopy.css">
+<link rel="Shortcut Icon" type="image/png" href="SpectroscopyIcon.png">
+
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="scripts.js"></script>
+
+<head>
+<style>
+#myPlot {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#hidden1 {
+  display: none;
+}
+</style>
+
+<script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+<script src="plotly-2.11.1.min.js"></script>
+<script>
+function SpecHome() {
+  window.open('AstronomicalSpectroscopy.html', '_self');
+}
+</script>
+</head>
+
+<header>
+  <title>Identifying Spectral Lines</title>
+  <button class="button biggerButton" onclick="SpecHome()">Main Menu</button>
+</header>
+
+<body>
+
+  <div class="body">
+
+    <div class="AstrSpectroscopy center">
+      <h1>Identifying Spectral Lines</h2>
+
+        <label for="whichLines">Choose a gas:</label>
+        <select name="whichLines" id="whichLines" onchange="whichLines()">
+          <option value="mystery1">Lines Configuration 1</option>
+          <option value="mystery2">Lines Configuration 2</option>
+          <option value="mystery3">Lines Configuration 3</option>
+          <option value="mystery4">Lines Configuration 4</option>
+          </optgroup>
+        </select>
+
+        <p id="display"> </p>
+        <p id="finished"> </p>
+    </div>
+
+    <input type="button" onclick="start()" value="Generate Spectrum" class="center" />
+
+    <div class="AstrSpectroscopy center" id="hidden1">
+      <div id="myPlot" class="center"></div>
+      <p id="Cursor">
+        Use your cursor to find the wavelengths that are omitted <br><br> 
+        You can click-and-drag on a desired area to zoom in and double-click to zoom out
+      </p>
+    </div>
+</body>
+
+<script src="./js/spectralLines.js"></script>
+<script src="./js/wavelengthToColor.js"></script>
+<script src="./js/helperFunctions.js"></script>
+<script>
+  var WLmin = 350;
+  var WLmax = 700;
+  var WLlength = WLmax - WLmin + 1;
+
+  var wavelengths = new Array(WLlength);
+  var yvals = new Array(WLlength);
+  var counts = new Array(WLlength);
+  var colors = new Array(WLlength);
+
+  var Lines = [393, 410, 431, 434, 486, 527, 686];
+  var negative = [-1, -1, -1, -1, -1, -1, -1];
+
+  var configs = {
+    "mystery1": [393, 410, 431, 434, 486, 527, 686],
+    "mystery2": [393, 397, 410, 431, 438, 590, 656],
+    "mystery3": [397, 423, 431, 434, 438, 517, 527],
+    "mystery4": [410, 423, 438, 486, 517, 527, 686]
+  };
+
+  var options = document.getElementById('whichLines').selectedOptions;
+  var values = Array.from(options).map(({ value }) => value);
+
+  for (var i = 0; i < WLlength; ++i) {
+    counts[i] = 0;
+  };
+  for (var i = 0; i < WLlength; ++i) {
+    wavelengths[i] = WLmin + i;
+  };
+  for (var i = 0; i < WLlength; ++i) {
+    yvals[i] = 1;
+  };
+
+  var trace = {
+    x: wavelengths,
+    y: yvals,
+    marker: { color: colors },
+    type: "bar"
+  };
+
+  var layout = {
+    plot_bgcolor: "black",
+    paper_bgcolor: "black",
+    yaxis: {
+      autorange: true,
+      showgrid: false,
+      zeroline: false,
+      showline: false,
+      autotick: true,
+      ticks: '',
+      showticklabels: false
+    },
+    bargap: 0,
+    xaxis: {
+    tickcolor: "white",
+    tickfont: {color:"white"},
+    fixedrange: true,
+    title: {
+      text: 'Wavelength (nm)',
+      font: {
+        color:'#FFFFFF',
+        size: 20
+      }
+    }
+  },
+    showlegend: false
+  }
+
+  var config = {
+    modeBarButtonsToRemove: ['pan2d', 'lasso2d', 'select2d', 'autoScale2d',
+     'toImage', 'zoom2d', 'resetScale2d', 'zoomIn2d', 'zoomOut2d'],
+    responsive: true,
+    displaylogo: false
+  }
+
+  var data = [trace]
+
+  Plotly.newPlot(which, data, layout, config);
+
+
+</script>
+
+</html>

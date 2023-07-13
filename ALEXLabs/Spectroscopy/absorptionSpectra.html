@@ -1,0 +1,245 @@
+<!-- Created by Alex Garcia, 2022-23 -->
+<!-- ALEX Labs -->
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../ALEX.css">
+<link rel="stylesheet" href="./css/spectroscopy.css">
+<link rel="Shortcut Icon" type="image/png" href="SpectroscopyIcon.png">
+
+<meta http-equiv='cache-control' content='no-cache'> 
+<meta http-equiv='expires' content='0'> 
+<meta http-equiv='pragma' content='no-cache'>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+<style>
+.modalWhiteBckgrd {
+  border: 1vw solid white;
+  background-color:lightgray;
+  border-radius:5px;
+  padding:10px;
+  margin-top:10px;
+  margin-bottom:10px;
+  max-width:120ch;
+}
+</style>
+
+<script>
+function SpecHome() {
+  window.open('AstronomicalSpectroscopy.html','_self');
+}
+</script>
+
+</head>
+
+<header>
+  <title>Absorption Spectra</title>
+  <button class = "button biggerButton" onclick="SpecHome()">Main Menu</button>
+</header>
+
+<body>
+<div class="body">
+
+  <div class="AstrSpectroscopy center" id="contain1">
+
+    <h1>Absorption Spectra</h1> 
+
+    <p>Welcome to the absorption spectra! This experiment is to look at absorption lines within a gas!</p>
+ 
+    <label for="whichGas"><span id="whichGasChoose">Choose a gas:</span> <span style="display:none;color:white;" id="whichGasChosen">Chosen Gas: <span id="whichGasSet"></span></span></label>
+    <select name="whichGas" id="whichGas" onchange = "switchGas()">
+        <option value="mystery1">Mystery Gas 1</option>
+        <option value="mystery2">Mystery Gas 2</option>
+        <option value="mystery3">Mystery Gas 3</option>
+        <option value="mystery4">Mystery Gas 4</option>
+      </optgroup>
+    </select>
+    <!-- <p id="whichGasSet"></p> -->
+    
+    <br><br>    
+
+    <button onclick="showReference()" class="AstrSpecButton center">Show Reference Spectra</button>
+
+  </div>
+
+  <button onclick="colorBlindToggle()" id="cbBtn" title="Colorblind Mode" class="AstrSpecButton">Colorblind Mode</button>
+
+  <div style="position:relative;" >
+    <canvas class="center" id="canvas" height="500" width="750"></canvas> 
+    <button id="warning" style="color:white;display:none;left:38%;top:65%;width:25%;background-color: red;position:absolute;font-size:20pt;">Warning:<br>Max photons is 20</button>
+  </div>
+  <br>
+  <input class="center" id="repeats" type = "number" placeholder="# Photons" min="0" max="20" oninput="checkNum()"/> 
+ 
+  <input type="button" onclick="start()" value="Start" class="center" id="startButton"/>
+  <input type="button" onclick="stop()"  value="Stop"  class="center" style="display:none;" id="stop"/>
+ 
+  <div class="modal" id="myModal" style="display:none;min-width:50ch;">
+    <div class="modalContent modalWhiteBckgrd center" style="width:60%;">
+      <h2 style="color:black;">Reference Spectra</h2>
+
+      <img src="mysterySpectra.png" width=45% class="center" style="aspect-ratio:9/11;"/>
+
+      <p style="color:black;">Click anywhere outside this box to exit</p>
+      <p id = "clickLocation"></p>
+    </div>
+  </div>
+
+  <p id="display"> </p>
+
+  <div class="AstrSpectroscopy center" id = "contain2">
+
+    <!-- <p id="warning" style="color:red;display:none;text-align:center;">Warning: Max number of photons is 20</p> -->
+
+    <div class="slidecontainer">
+      <h2>Energy: <span id="energy"></span> eV <span id="color" style="display:none;"></span></h2>
+      <input type="range" min="1.6" max="3.5" value="2.5" step="0.1" class="slider" id="myRange" oninput="sliderInput()">
+    </div>
+    <h2 id="myRangeTitle">Use this slider to set the photon energy</h2>
+
+    
+
+    <h2 style="text-align:left;display:none;" id="resultsText">Results:</h2>
+    
+    <p id="displayResult" style="display:none;">Observed: <span id="numObs">X</span> out of <span id="numEmit">Y</span></h2></p>
+
+    <h2><span id="number"></span> <span id="finish"> </span> </h2>
+    <!-- There is probably a better way to do this, but I do not know it -->
+    <p><span id="prevNum1"></span> <span id="prev1"></span></p>
+    <p><span id="prevNum2"></span> <span id="prev2"></span></p>
+    <p><span id="prevNum3"></span> <span id="prev3"></span></p>
+    <p><span id="prevNum4"></span> <span id="prev4"></span></p>
+    <p><span id="prevNum5"></span> <span id="prev5"></span></p>
+    <p><span id="prevNum6"></span> <span id="prev6"></span></p>
+    <p><span id="prevNum7"></span> <span id="prev7"></span></p>
+    <p><span id="prevNum8"></span> <span id="prev8"></span></p>
+    <p><span id="prevNum9"></span> <span id="prev9"></span></p>
+    <p><span id="prevNum10"></span> <span id="prev10"></span></p>
+    <p><span id="prevNum11"></span> <span id="prev11"></span></p>
+    <p><span id="prevNum12"></span> <span id="prev12"></span></p>
+    <p><span id="prevNum13"></span> <span id="prev13"></span></p>
+    <p><span id="prevNum14"></span> <span id="prev14"></span></p>
+    <p><span id="prevNum15"></span> <span id="prev15"></span></p>
+    <p><span id="prevNum16"></span> <span id="prev16"></span></p>
+    <p><span id="prevNum17"></span> <span id="prev17"></span></p>
+    <p><span id="prevNum18"></span> <span id="prev18"></span></p>
+    <p><span id="prevNum19"></span> <span id="prev19"></span></p>
+    <p><span id="prevNum20"></span> <span id="prev20"></span></p>
+
+    <p id="test"></p>
+   </div>
+
+</body>
+
+<script src="./js/helperFunctions.js"></script>
+<script src="./js/wavelengthToColor.js"></script>
+<script src="./js/absorptionSpectra.js"></script>
+<script src="./js/absorptionSpectraConstants.js"></script>
+<script src="./js/hotKeys.js"></script>
+<script>
+// Get all options for gasses (i.e. Mystery1, Mystery2...)
+var options = document.getElementById('whichGas').selectedOptions;
+var values = Array.from(options).map(({ value }) => value);
+values = String(values);
+
+// Defaults to first mystery gas
+document.getElementById('whichGasSet').innerHTML = values.charAt(values.length - 1);
+var unlikelyEnergies = allGasEnergy[values];  
+var weakUnlikelyEnergies = allGasWeak[values];
+
+// Handles switching mystery gasses
+function switchGas () {
+  values = Array.from(options).map(({ value }) => value);
+  whichGas = String(values);
+  document.getElementById('whichGasSet').innerHTML = whichGas.charAt(whichGas.length - 1);
+  unlikelyEnergies = allGasEnergy[whichGas]
+  weakUnlikelyEnergies = allGasWeak[whichGas]
+}
+  
+// Get default energy
+var slider = document.getElementById("myRange");
+var output = document.getElementById("energy");
+output.innerHTML = slider.value;
+
+// Change all borders colors to default wavelength
+var WL = wavelengtheVConverter(document.getElementById("energy").innerHTML);
+var color = wavelengthToColor(WL);    
+document.getElementById("energy").style.color = color;
+document.getElementById("contain1").style.borderColor = color;
+document.getElementById("contain2").style.borderColor = color;
+
+// Change the wavelegth on slider change
+function sliderInput() {
+  output.innerHTML = slider.value;
+  var energy = document.getElementById("energy").innerHTML
+  var WL = wavelengtheVConverter(energy);
+  var color = wavelengthToColor(WL);    
+
+  document.getElementById("energy").style.color = color; 
+  document.getElementById("contain1").style.borderColor = color;
+  document.getElementById("contain2").style.borderColor = color;
+
+  document.getElementById("resultsText").style.display = "none";
+  document.getElementById("displayResult").style.display = "none";
+  document.getElementById("number").innerHTML = "";
+  document.getElementById("finish").innerHTML = "";
+
+  document.getElementById('color').innerHTML = COLORS[energy];
+  document.getElementById('color').style.color = color;
+  for (var i = 1; i < parseInt(document.getElementById("repeats").value); ++i) {
+      s1 = "prev" + String(i);
+      s2 = "prevNum" + String(i);
+      document.getElementById(s1).innerHTML = "";
+      document.getElementById(s2).innerHTML = "";
+  }
+  
+}
+
+// Handle bringing up the reference spectra
+var modal = document.getElementById("myModal");
+window.onclick = function(event) {
+ if (event.target == modal) {
+    modal.style.display = "none";
+ }
+}
+function showReference() {
+  refDiv = document.getElementById("myModal")
+  refDiv.style.display = refDiv.style.display != 'none' ? 'none' : 'block';
+}
+
+function colorBlindToggle() {
+  var energy = document.getElementById("energy").innerHTML
+  var WL = wavelengtheVConverter(energy);
+  var color = wavelengthToColor(WL);  
+
+  document.getElementById('color').innerHTML = COLORS[energy];
+  document.getElementById('color').style.color = color;
+
+  var COLOR_DISPLAY = document.getElementById('color');
+  COLOR_DISPLAY.style.display = COLOR_DISPLAY.style.display == "none" ? "block" : "none"; 
+}
+
+function checkNum() {
+  var repeatsInput = document.getElementById('repeats');
+  var warning      = document.getElementById('warning');
+  if (repeatsInput.value > 20) {
+    warning.style.display = "block";
+    document.getElementById('startButton').style.display = 'none';
+    if (!BLINKING) {
+        blinkInterval = setInterval(function() {
+            flashtext('warning', 'red');
+            flashbackground('warning', 'white');
+        }, 750 );
+        BLINKING = true;
+    }
+    // document.getElementById('warning').innerHTML = 'Max number of photons is 20'
+  } else {
+    warning.style.display = "none";
+    document.getElementById('startButton').style.display = 'block';
+  }
+}
+</script>
+
+</html>
