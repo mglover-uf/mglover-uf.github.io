@@ -1,0 +1,123 @@
+<!-- Created by Alex Garcia, 2022-23 -->
+<!-- ALEX Labs -->
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../ALEX.css">
+<link rel="stylesheet" href="./css/Jupiter.css">
+
+<link rel="Shortcut Icon" type="image/png" href="JupiterIcon.png">
+
+<meta http-equiv='cache-control' content='no-cache'> 
+<meta http-equiv='expires' content='0'> 
+<meta http-equiv='pragma' content='no-cache'>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+<script>
+function backButton() {
+  window.open("YouCanWeighJupiter.html","_self");
+}
+function moonSelector() {
+  window.open("modeSelector.html","_self");
+}
+</script>
+</head>
+
+<header>
+  <title>Timestep Orbits</title>
+  <button class = "button biggerButton" onclick="backButton()">Main Menu</button>
+  <button class = "button biggerButton" onclick="moonSelector()">Back</button>
+</header>
+
+<body>
+<div class="body">
+
+  <div class="WeighJupiter center">
+
+  <h2 style="opacity:0.5">Use these sliders to set the time step and zoom in/out</h2>
+
+  <div class="slidecontainer" id="TimestepControl">
+    <input type="range" min="1" max="25" value="1" step="1" class="slider" id="myRange">
+    <h2>Number of Hours: <span id="desired"></span></h2>
+  </div>
+
+  <div class="slidecontainer" id="ZoomControl">
+    <input type="range" min="2" max="10" value="5" step="1" class="slider" id="zoomRange">
+    <h2>Zoom: <span id="zoom"></span></h2>
+  </div>
+ 
+  </div>
+
+  <div class="center" style="position:relative;" >
+    <canvas id="canvas" class="center" width="600" height="400"></canvas>
+
+    <button id="warning" style="color:white;display:none;left:38%;top:65%;width:25%;background-color: red;position:absolute;font-size:20pt;" onclick="blinker()">Warning:<br>Cannot go to negative times</button>
+  </div>
+
+  <div class="WeighJupiter center">
+
+  <h2 style="opacity:0.5">Time elapsed: <span id="demo" style="color:black;opacity:1;">0</span> Hours <span id="counter" style="opacity:0;">0</span></h2>
+
+  
+  <!-- <p><span id="warning" style="color:red;"></span> <span id="restWarning"></span></p> -->
+
+  <input type="button" onclick="Next()" class="FoB" value="Next Timestep"/>
+  <input type="button" onclick="Back()" class="FoB" value="Back One Timestep"/>
+  <h2 id="clickNone">Click anywhere on the image to see the position</h2>
+  <h2><span id="clickSome"></span> <span id="clickLocation"></span></h2>
+  </div>
+
+  <button onclick="whichIsWhich()" id="myBtn" title="Moon Guide">Moon Guide</button>
+  <button onclick="colorBlindToggle()" id="cbBtn" title="Colorblind Mode">Colorblind Mode</button>
+
+  <p id="test"></p>
+
+  <div class="modal" id="myModal">
+
+    <div class="modal-content">
+
+      <p><span style="color:orange;">Io is Orange <span id="IOLabel" style="display:none;">(X)</span></span>
+        <br>
+        <span style="color:red">Europa is Red <span id="EUROPALabel" style="display:none;">(Diamond)</span></span>
+        <br>
+        <span style="color:green;">Ganymede is Green <span id="GANYMEDELabel" style="display:none;">(Triangle)</span></span>
+        <br>
+        <span style="color:blue">Callisto is Blue <span id="CALLISTOLabel" style="display:none;">(Square)</span></span></p>
+
+      <p style="color:black;">Click anywhere outside this box to exit</p>
+
+    </div>
+
+  </div>
+
+<script src="./js/helperFunctions.js"></script>
+<script src="./js/constants.js"></script>
+<script src="./js/animation.js"></script>
+<script>
+
+  var canvas = document.getElementById('canvas');
+  var context = canvas.getContext('2d');
+
+  // Create the first scene
+  animate();
+
+  // When clicking on the Canvas element, display the X position in arcseconds
+  document.getElementById("canvas").addEventListener('click', printMousePos, true);
+  function printMousePos(e){
+    var JupiterWidth = 105/SCALE * canvas.clientWidth / 1220;
+    var rect = canvas.getBoundingClientRect();
+    var xHalfWidth = canvas.clientWidth/2 + rect.left;
+    var cursorX = ( (parseInt(e.pageX) - xHalfWidth) / (2*JupiterWidth)).toFixed(2);
+    var cursorArcsec = (cursorX * 23.4 ).toFixed(2);
+    document.getElementById("clickSome").innerHTML = "X Position (relative to center of frame): ";
+    document.getElementById("clickLocation").innerHTML = cursorArcsec + "''";
+    document.getElementById("clickNone").style.display = "none";
+  }
+
+</script>  
+
+</body>
+
+</html>

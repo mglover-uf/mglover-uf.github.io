@@ -1,0 +1,67 @@
+<!-- Created by Alex Garcia, 2022-23 -->
+<!-- ALEX Labs -->
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../ALEX.css">
+<link rel="stylesheet" href="./css/Jupiter.css">
+<link rel="Shortcut Icon" type="image/png" href="JupiterIcon.png">
+
+<meta http-equiv='cache-control' content='no-cache'> 
+<meta http-equiv='expires' content='0'> 
+<meta http-equiv='pragma' content='no-cache'>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<header>
+  <title>Weigh Jupiter</title>
+  <button class = "button biggerButton" onclick="ALEXHome()">ALEX Home</button>
+</header>
+
+<script>
+function ALEXHome() {
+  window.open('../ALEXLabs.html','_self');
+}
+function startConfig1() {
+  window.open("modeSelector.html","_self");
+}
+function backgroundImage() {
+  window.open("backgroundExplain.html","_self");
+}
+</script>
+
+<body>
+<div class="body">
+
+  <div class="WeighJupiter center">
+
+   <h1 style="text-align:center;font-size:35pt;">You Can Weigh Jupiter </h1> 
+
+  </div>
+
+  <div class="WeighJupiter center">
+
+  <p>Welcome to You Can Weigh Jupiter! In this lab, we will be observing Jupiter at opposition. Opposition is when Jupiter is opposite the Sun in the sky. </p>
+
+  <div class="mobile">
+    <p>If jupiter orbits with a semi-major axis of around 5.2 AU and Earth (by definition) orbits at around 1 AU, what is the distance between the Earth and Jupiter when they're at their closest (i.e. opposition)?
+  </div>
+  <div class="desktop">
+    <p> The geometric configuration of opposition is shown below: </p>
+  
+    <img src="./Jupiter/Configuration1.png" class="center"/>
+  
+    <p>Based on the diagram, how far is Jupiter from Earth (in AU) in the configuration?</p>
+  </div>
+
+  <input type="button" onclick="startConfig1()" value="Start!" class="center"/>
+
+  </div>
+
+<footer>
+  <button class="button" onclick="backgroundImage()">About the background image </button>
+</footer>
+
+</body>
+
+</html>
