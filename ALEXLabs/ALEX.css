@@ -1,0 +1,155 @@
+/* Created by Alex Garcia, 2022-23 */
+/* ALEX Labs */
+
+p {
+  color:black;
+  font-size: min(max(14pt, 1.5vw), 16pt);
+}
+
+body {
+  color:black;
+  background-color:black;
+  padding-top:min(30px,1.2vw);
+  padding-bottom:min(120px,3vw);
+  height:100%;
+  display:block;
+  background-size: 75% 100%;
+  font-size: min(max(14pt, 1.5vw), 16pt);
+  margin-left:0;
+  margin-right:0;
+}
+
+header {
+  background-color:transparent;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:auto;
+  margin-bottom:15px;
+}
+
+footer {
+  background-color:transparent;
+  position:absolute;
+  width:100%;
+  left:0;
+  margin-top:-50px;
+}
+
+div {
+  color:white;
+}
+
+.button {
+  color:white;
+  border:none;
+  padding: min(max(0px, 1.5vw), 14px);
+  text-align: center;
+  font-size: min(max(14pt, 1.5vw), 16pt);
+  transition-duration: 0.4s;
+  background-color:transparent;
+  margin-bottom:30px;
+}
+
+.biggerButton {
+  font-size: min(max(14pt, 1.5vw), 16pt);
+}
+
+.button:hover {
+  color:black;
+  background-color:white;
+  border-radius:5px;
+}
+
+.center {
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#wbckgrd {
+  background-color:white;
+}
+
+a {
+  color:white;
+  font-size:min(max(14pt, 1.5vw), 16pt);
+}
+
+a:hover {
+  color:red;
+}
+
+.body {
+  display: in-line block;
+  margin-left:10%;
+  margin-right:10%;
+  margin-bottom:5%;
+  margin-top:5%;
+}
+
+h1 {
+  color:steelblue;
+  font-size:min(max(20pt, 3vw), 32pt);
+}
+
+h2 {
+  color:tomato;
+  font-size:min(max(16pt, 2vw), 24pt);
+}
+
+h3 {
+  font-size:min(max(14pt, 1.5vw), 16pt);
+  color:steelblue;
+}
+
+#footer-text {
+  color:black;
+  padding:10px;
+}
+
+hr {
+  border: 1px solid darkblue;
+}
+
+input {
+  background-color:black;
+  width:250px;
+}
+
+::placeholder {
+  opacity:0.6;
+}
+
+table {
+  border: 0px;
+}
+
+@media (max-width: 800px) {
+  .desktop {
+    display: none
+  }
+}
+@media (min-width: 800px) {
+  .mobile {
+    display: none
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.75em;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: gray; 
+}
